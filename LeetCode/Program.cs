@@ -1,4 +1,4 @@
-﻿using LeetCode.Task_1195;
+﻿using LeetCode.Task_47;
 
 namespace LeetCode;
 
@@ -6,23 +6,14 @@ public class Solution
 {
     public static void Main(string[] args)
     {
-        int n; 
-        var nString = Console.ReadLine();
-        if(int.TryParse(nString, out n)) 
+        var solution = new SolutionForTask_47();
+        var permutations = solution.PermuteUnique(new[] { 1, 2, 3, 3, 3, 4 });
+        foreach (var permutation in permutations) 
         {
-            var fizzBuzz = new FizzBuzz(n);
-            var threadA = new Thread(() => fizzBuzz.Fizz(() => Console.WriteLine("Fizz")));
-            var threadB = new Thread(() => fizzBuzz.Buzz(() => Console.WriteLine("Buzz")));
-            var threadC = new Thread(() => fizzBuzz.Fizzbuzz(() => Console.WriteLine("Fizzbuzz")));
-            var threadD = new Thread(() => fizzBuzz.Number(i => Console.WriteLine(i)));
-            threadA.Start();
-            threadB.Start();
-            threadC.Start();
-            threadD.Start();
-        }
-        else
-        {
-            Console.WriteLine("Incorrent input, need number!");
+            Console.Write("[");
+            var numsJoined = string.Join(", ", permutation);
+            Console.Write(numsJoined);
+            Console.Write("]\n");
         }
     }
 }
